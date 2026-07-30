@@ -3,15 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9SNB2XSL8E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9SNB2XSL8E');
+    </script>
+
     <title>Jujutsu Heat - Official Manga Site</title>
+
     <style>
-        /* Basic Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             background-color: #0d0d11;
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+        }
+
+        /* Top Season Navigation Bar */
+        #season-nav {
+            display: flex;
+            justify-content: center;
+            background-color: #050508;
+            padding: 15px;
+            border-bottom: 2px solid #ff4500;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .tab-btn {
+            background-color: #1a1a24;
+            color: #ffffff;
+            border: 2px solid #ff4500;
+            padding: 10px 25px;
+            margin: 0 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background-color: #ff4500;
+            color: #000000;
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.8);
+        }
+
+        /* Season 1 Section Styling */
+        #season1-view {
             text-align: center;
         }
 
@@ -34,14 +85,12 @@
             font-size: 1.2rem;
         }
 
-        /* Main Container */
         .container {
             max-width: 800px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
-        /* Manga Image Styling */
         .manga-poster {
             width: 100%;
             max-width: 600px;
@@ -51,7 +100,6 @@
             margin-bottom: 30px;
         }
 
-        /* Chapter List Section */
         .chapters {
             background-color: #1a1a24;
             padding: 20px;
@@ -67,31 +115,147 @@
             margin-top: 0;
         }
 
-        .chapter-list {
+        .chapter-list-s1 {
             list-style: none;
             padding: 0;
         }
 
-        .chapter-list li {
+        .chapter-list-s1 li {
             padding: 10px 0;
             border-bottom: 1px solid #2a2a3a;
             font-size: 1.1rem;
         }
 
-        .chapter-list li span {
+        .chapter-list-s1 li span {
             color: #00ccff;
             font-weight: bold;
         }
 
-        /* Footer */
+        /* Season 2 Section Layout */
+        #season2-view {
+            display: flex;
+            min-height: calc(100vh - 65px);
+        }
+
+        #sidebar {
+            width: 250px;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-right: 2px solid #ff4500;
+            overflow-y: auto;
+            max-height: calc(100vh - 65px);
+            position: sticky;
+            top: 65px;
+        }
+
+        #sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+        #sidebar::-webkit-scrollbar-thumb {
+            background-color: #ff4500;
+            border-radius: 4px;
+        }
+
+        #sidebar h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #ff4500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chapter-list-s2 {
+            list-style: none;
+        }
+
+        .chapter-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #262626;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: bold;
+        }
+
+        .chapter-item:hover, .chapter-item.active {
+            background-color: #ff4500;
+            color: #000;
+        }
+
+        #main-content {
+            flex-grow: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-area {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-area h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .manga-container {
+            max-width: 800px;
+            width: 100%;
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .manga-page {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .coming-soon-box {
+            padding: 60px 20px;
+            text-align: center;
+            color: #ff4500;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .page-btn {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #ff4500;
+            color: #000000;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .page-btn:hover {
+            background-color: #e03d00;
+            transform: scale(1.05);
+        }
+
         footer {
             margin-top: 50px;
             padding: 20px;
             background-color: #050508;
             font-size: 0.9rem;
             color: #666;
+            text-align: center;
         }
-        
+
         footer .lazy-text {
             color: #ffcc00;
             font-weight: bold;
@@ -101,38 +265,175 @@
 </head>
 <body>
 
-    <header>
-        <h1>JUJUTSU HEAT</h1>
-        <p>Season 1: "The Heatwave Incident Arc"</p>
-    </header>
+    <!-- Top Navigation Tabs -->
+    <div id="season-nav">
+        <button class="tab-btn active" onclick="switchSeason(1)">🔥 Season 1</button>
+        <button class="tab-btn" onclick="switchSeason(2)">⚡ Season 2</button>
+    </div>
 
-    <div class="container">
-        <!-- Image name updated here to match your folder -->
-        <img src="jjh whole season 1 (2).png" alt="Jujutsu Heat Season 1 Poster" class="manga-poster">
+    <!-- ================= SEASON 1 VIEW ================= -->
+    <div id="season1-view">
+        <header>
+            <h1>JUJUTSU HEAT</h1>
+            <p>Season 1: "The Heatwave Incident Arc"</p>
+        </header>
 
-        <section class="chapters">
-            <h2>Chapter List</h2>
-            <ul class="chapter-list">
-                <li><span>Chapter 1:</span> The Heatwave Incident (43.7°C!)</li>
-                <li><span>Chapter 2:</span> The Circle Prophecy</li>
-                <li><span>Chapter 3:</span> The Heat King (Ryomen Heatkuna)</li>
-                <li><span>Chapter 4:</span> Domain Expansion: Infinite Ceiling Fan</li>
-                <li><span>Chapter 5:</span> The Cold Bottle Arc</li>
-                <li><span>Chapter 6:</span> The Rain Appears</li>
-                <li><span>Chapter 7:</span> Fan in Rain Body</li>
-                <li><span>Chapter 8:</span> Twin Meteor World Heat Clash</li>
-                <li><span>Chapter 9:</span> The Final Battle</li>
-                <li><span>Chapter 10:</span> Summer Falls</li>
-                <li><span>Chapter 11:</span> Winter Arc</li>
-                <li><span>Chapter 12:</span> The True Final Boss (EXAMS)</li>
+        <div class="container">
+            <img src="jjh whole season 1 (2).png" alt="Jujutsu Heat Season 1 Poster" class="manga-poster">
+
+            <section class="chapters">
+                <h2>Chapter List</h2>
+                <ul class="chapter-list-s1">
+                    <li><span>Chapter 1:</span> The Heatwave Incident (43.7°C!)</li>
+                    <li><span>Chapter 2:</span> The Circle Prophecy</li>
+                    <li><span>Chapter 3:</span> The Heat King (Ryomen Heatkuna)</li>
+                    <li><span>Chapter 4:</span> Domain Expansion: Infinite Ceiling Fan</li>
+                    <li><span>Chapter 5:</span> The Cold Bottle Arc</li>
+                    <li><span>Chapter 6:</span> The Rain Appears</li>
+                    <li><span>Chapter 7:</span> Fan in Rain Body</li>
+                    <li><span>Chapter 8:</span> Twin Meteor World Heat Clash</li>
+                    <li><span>Chapter 9:</span> The Final Battle</li>
+                    <li><span>Chapter 10:</span> Summer Falls</li>
+                    <li><span>Chapter 11:</span> Winter Arc</li>
+                    <li><span>Chapter 12:</span> The True Final Boss (EXAMS)</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <!-- ================= SEASON 2 VIEW ================= -->
+    <div id="season2-view" style="display: none;">
+        <div id="sidebar">
+            <h2>Jujutsu Heat</h2>
+            <ul class="chapter-list-s2" id="chapter-list-container">
+                <!-- Chapters generated via JS -->
             </ul>
-        </section>
+        </div>
+
+        <div id="main-content">
+            <div class="header-area">
+                <h1 id="chapter-title">Season 2 - Chapter 1</h1>
+            </div>
+
+            <div class="manga-container">
+                <img id="manga-viewer" class="manga-page" src="" alt="Jujutsu Heat Page" style="display:none;">
+                <div id="coming-soon" class="coming-soon-box" style="display:none;">
+                    🔥 This Chapter Page is coming soon! 🔥
+                </div>
+                <div id="button-area"></div>
+            </div>
+        </div>
     </div>
 
     <footer>
-        <p>made by me [made with chatgpt and gemini 😥☠️]</p>
+        <p>Made BY Vineet <br> Code By Gemini & ChatGPT <br> Images By ChatGPT</p>
         <p class="lazy-text">IM TOO LAZY TO MAKE WHOLE PAGES SO I MADE IT IN ONLY ONE PAGE LOL 😎</p>
     </footer>
 
+    <script>
+        // Season Switcher Function
+        function switchSeason(seasonNum) {
+            const s1View = document.getElementById('season1-view');
+            const s2View = document.getElementById('season2-view');
+            const buttons = document.querySelectorAll('.tab-btn');
+
+            if (seasonNum === 1) {
+                s1View.style.display = 'block';
+                s2View.style.display = 'none';
+                buttons[0].classList.add('active');
+                buttons[1].classList.remove('active');
+            } else {
+                s1View.style.display = 'none';
+                s2View.style.display = 'flex';
+                buttons[0].classList.remove('active');
+                buttons[1].classList.add('active');
+            }
+        }
+
+        // Season 2 Logic
+        const totalChapters = 40;
+        const chapterListContainer = document.getElementById('chapter-list-container');
+        const mangaViewer = document.getElementById('manga-viewer');
+        const comingSoonBox = document.getElementById('coming-soon');
+        const buttonArea = document.getElementById('button-area');
+
+        // Build sidebar buttons
+        for (let i = 1; i <= totalChapters; i++) {
+            const li = document.createElement('li');
+            li.className = i === 1 ? 'chapter-item active' : 'chapter-item';
+            li.innerText = `Season 2 - Chap ${i}`;
+            li.onclick = () => changeChapter(i);
+            chapterListContainer.appendChild(li);
+        }
+
+        function loadImage(baseName) {
+            const extensions = ['.png', '.jpg', '.jpeg', '.PNG', '.JPG'];
+            let extIndex = 0;
+
+            function tryNext() {
+                if (extIndex < extensions.length) {
+                    mangaViewer.src = baseName + extensions[extIndex];
+                    extIndex++;
+                } else {
+                    mangaViewer.style.display = 'none';
+                    comingSoonBox.style.display = 'block';
+                }
+            }
+
+            mangaViewer.onload = () => {
+                mangaViewer.style.display = 'block';
+                comingSoonBox.style.display = 'none';
+            };
+
+            mangaViewer.onerror = () => {
+                tryNext();
+            };
+
+            tryNext();
+        }
+
+        function changeChapter(chapterNum) {
+            const items = document.querySelectorAll('#chapter-list-container .chapter-item');
+            items.forEach((item, index) => {
+                item.classList.toggle('active', index === chapterNum - 1);
+            });
+
+            document.getElementById('chapter-title').innerText = "Season 2 - Chapter " + chapterNum;
+            buttonArea.innerHTML = '';
+
+            if (chapterNum === 26 || chapterNum === 28) {
+                showMultiPage(chapterNum, 1);
+            } else {
+                loadImage(chapterNum);
+            }
+
+            window.scrollTo({top: 0});
+        }
+
+        function showMultiPage(chapterNum, pageNum) {
+            buttonArea.innerHTML = '';
+
+            if (pageNum === 1) {
+                loadImage(chapterNum);
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'page-btn';
+                nextBtn.innerText = 'Next Page ➡️';
+                nextBtn.onclick = () => showMultiPage(chapterNum, 2);
+                buttonArea.appendChild(nextBtn);
+            } else if (pageNum === 2) {
+                loadImage(chapterNum + ' 2');
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'page-btn';
+                prevBtn.innerText = '⬅️ Previous Page';
+                prevBtn.onclick = () => showMultiPage(chapterNum, 1);
+                buttonArea.appendChild(prevBtn);
+            }
+
+            window.scrollTo({top: 0});
+        }
+
+        // Initialize Chapter 1 for Season 2 reader
+        changeChapter(1);
+    </script>
 </body>
 </html>
